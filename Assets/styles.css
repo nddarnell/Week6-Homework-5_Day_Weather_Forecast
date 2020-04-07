@@ -1,0 +1,25 @@
+.hot {
+    background-color: rgb(255, 56, 56);
+}
+.cold {
+    background-color: rgb(78, 204, 253);
+}
+.nice {
+    background-color: rgb(255, 255, 194);
+}
+
+.uvLow {
+    background-color: yellowgreen;
+}
+.uvMed {
+    background-color: rgb(252, 252, 116);
+}
+.uvHigh {
+    background-color: rgb(245, 177, 50);
+}
+.uvVeryHigh {
+    background-color: rgb(245, 101, 101);
+}
+.uvExt {
+    background-color: rgb(218, 102, 218);
+}

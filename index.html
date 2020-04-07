@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="./Assets/styles.css">
     <title>Weather Forecast App!</title>
+    <link rel="shortcut icon" href="./Assets/icon.png" type="image/x-icon">
 </head>
 <body>
     <div class="text-center mt-5 mb-5">
@@ -21,7 +22,7 @@
                     <form class="form">
                       <div class="form-inline">
                         <label for="exampleFormControlInput1" class="mx-1">City:</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="City Name">
+                        <input type="text" class="form-control" id="formControlInput1" placeholder="City Name">
                       </div>
                       <!-- State Selection Here -->
                       <div class="form-inline mt-4">
@@ -88,11 +89,11 @@
                         <div class="card">
                             <h5 id="todaysDate" class="card-header"></h5>
                             <div class="card-body">
-                              <h5 id ="cityName" class="card-title">Your City of Choice </h5> <!--append cloud icon next to city?-->
-                              <p class="card-text">Current Temperature:</p>
-                              <p class="card-text">Current Humidity:</p>
-                              <p class="card-text">Current Wind Speed:</p>
-                              <p class="card-text">Current UV Index:</p>
+                              <h5 id="cityName" class="card-title">Your City of Choice </h5> <!--append cloud icon next to city?-->
+                              <p id="currentTemp" class="card-text">Current Temperature: </p>
+                              <p id="currentHum" class="card-text">Current Humidity: </p>
+                              <p id="currentWind" class="card-text">Current Wind Speed: </p>
+                              <p id="currentUV" class="card-text">Current UV Index: </p>
                             </div>
                           </div>
                     </div>
@@ -113,10 +114,10 @@
                           Tomorrow:
                         </div>
                         <ul class="list-group list-group-flush">
-                          <li class="list-group-item">Temp: </li>
-                          <li class="list-group-item">Humidity: </li>
-                          <li class="list-group-item">Wind: </li>
-                          <li class="list-group-item">Clouds: </li>
+                          <li id="day1Temp" class="list-group-item">Temp: </li>
+                          <li id="day1Humidity" class="list-group-item">Humidity: </li>
+                          <li id="day1Wind" class="list-group-item">Wind: </li>
+                          <li id="day1Clouds" class="list-group-item">Clouds: </li>
                         </ul>
                     </div>
                 </div>
@@ -126,10 +127,10 @@
                           Day after Tomorrow:
                         </div>
                         <ul class="list-group list-group-flush">
-                          <li class="list-group-item">Temp: </li>
-                          <li class="list-group-item">Humidity: </li>
-                          <li class="list-group-item">Wind: </li>
-                          <li class="list-group-item">Clouds: </li>
+                          <li id="day2Temp" class="list-group-item">Temp: </li>
+                          <li id="day2Humidity" class="list-group-item">Humidity: </li>
+                          <li id="day2Wind" class="list-group-item">Wind: </li>
+                          <li id="day2Clouds" class="list-group-item">Clouds: </li>
                         </ul>
                     </div>
                 </div>
@@ -139,10 +140,10 @@
                           3 Days from Now:
                         </div>
                         <ul class="list-group list-group-flush">
-                          <li class="list-group-item">Temp: </li>
-                          <li class="list-group-item">Humidity: </li>
-                          <li class="list-group-item">Wind: </li>
-                          <li class="list-group-item">Clouds: </li>
+                          <li id="day3Temp" class="list-group-item">Temp: </li>
+                          <li id="day3Humidity" class="list-group-item">Humidity: </li>
+                          <li id="day3Wind" class="list-group-item">Wind: </li>
+                          <li id="day3Clouds" class="list-group-item">Clouds: </li>
                         </ul>
                     </div>
                 </div>
@@ -152,10 +153,10 @@
                           4 Days from now:
                         </div>
                         <ul class="list-group list-group-flush">
-                          <li class="list-group-item">Temp: </li>
-                          <li class="list-group-item">Humidity: </li>
-                          <li class="list-group-item">Wind: </li>
-                          <li class="list-group-item">Clouds: </li>
+                          <li id="day4Temp" class="list-group-item">Temp: </li>
+                          <li id="day4Humidity" class="list-group-item">Humidity: </li>
+                          <li id="day4Wind" class="list-group-item">Wind: </li>
+                          <li id="day4Clouds" class="list-group-item">Clouds: </li>
                         </ul>
                     </div>
                 </div>
@@ -165,10 +166,10 @@
                           5 Days from Now:
                         </div>
                         <ul class="list-group list-group-flush">
-                          <li class="list-group-item">Temp: </li>
-                          <li class="list-group-item">Humidity: </li>
-                          <li class="list-group-item">Wind: </li>
-                          <li class="list-group-item">Clouds: </li>
+                          <li id="day5Temp" class="list-group-item">Temp: </li>
+                          <li id="day5Humidity" class="list-group-item">Humidity: </li>
+                          <li id="day5Wind" class="list-group-item">Wind: </li>
+                          <li id="day5Clouds" class="list-group-item">Clouds: </li>
                         </ul>
                     </div>
                 </div>
