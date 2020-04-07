@@ -23,3 +23,6 @@
 .uvExt {
     background-color: rgb(218, 102, 218);
 }
+.hidden{
+    visibility: hidden;
+}

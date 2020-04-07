@@ -15,171 +15,190 @@
 
 
     <div class="jumbotron">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-2">
-                    <!-- City Name Here -->
-                    <form class="form">
-                      <div class="form-inline">
-                        <label for="exampleFormControlInput1" class="mx-1">City:</label>
-                        <input type="text" class="form-control" id="formControlInput1" placeholder="City Name">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-2">
+            <!-- City Name Here -->
+            <form class="form">
+              <div class="form-group">
+                <div class="row">
+                  <label for="exampleFormControlInput1" class="col-4 mt-1">City:</label>
+                  <input type="text" class="form-control col" id="formControlInput1" placeholder="City Name">
+                </div>
+              </div>
+              <!-- State Selection Here -->
+              <div class="form-group">
+                <div class="row">
+                  <label for="exampleFormControlSelect1" class="col-4 mt-1">State:</label>
+                  <select class="form-control col" id="exampleFormControlSelect1">
+                    <option value="Alabama">AL</option>
+                    <option value="Alaska">AK</option>
+                    <option value="Arizona">AZ</option>
+                    <option value="Arkansas">AR</option>
+                    <option value="California">CA</option>
+                    <option value="Colorado">CO</option>
+                    <option value="Connecticut">CT</option>
+                    <option value="Delaware">DE</option>
+                    <option value="Florida">FL</option>
+                    <option value="Georgia">GA</option>
+                    <option value="Hawaii">HI</option>
+                    <option value="Idaho">ID</option>
+                    <option value="Illinois">IL</option>
+                    <option value="Indiana">IN</option>
+                    <option value="Iowa">IA</option>
+                    <option value="Kansas">KS</option>
+                    <option value="Kentucky">KY</option>
+                    <option value="Louisiana">LA</option>
+                    <option value="Maine">ME</option>
+                    <option value="Maryland">MD</option>
+                    <option value="Massachusetts">MA</option>
+                    <option value="Michigan">MI</option>
+                    <option value="Minnesota">MN</option>
+                    <option value="Mississippi">MS</option>
+                    <option value="Missouri">MO</option>
+                    <option value="Montana">MT</option>
+                    <option value="Nebraska">NE</option>
+                    <option value="Nevada">NV</option>
+                    <option value="New Hampshire">NH</option>
+                    <option value="New Jersey">NJ</option>
+                    <option value="New Mexico">NM</option>
+                    <option value="New York">NY</option>
+                    <option value="North Carolina">NC</option>
+                    <option value="North Dakota">ND</option>
+                    <option value="Ohio">OH</option>
+                    <option value="Oklahoma">OK</option>
+                    <option value="Oregon">OR</option>
+                    <option value="Pennsylvania">PA</option>
+                    <option value="Rhode Island">RI</option>
+                    <option value="South Carolina">SC</option>
+                    <option value="South Dakota">SD</option>
+                    <option value="Tennessee">TN</option>
+                    <option value="Texas">TX</option>
+                    <option value="Utah">UT</option>
+                    <option value="Vermont">VT</option>
+                    <option value="Virginia">VA</option>
+                    <option value="Washington">WA</option>
+                    <option value="West Virginia">WV</option>
+                    <option value="Wisconsin">WI</option>
+                    <option value="Wyoming">WY</option>
+                  </select>   
+                </div>
+              </div>
+                <!-- Submit button here -->
+              <div class="row">
+                <button id="search" type="submit" class="btn btn-primary col mr-1">Search</button>
+                <button id="clear-btn" class="btn btn-danger col">Clear</button>
+              </div>
+              <div id="past-searches"class="row">
+
+              </div>
+              
+            </form>
+            
+
+
+            <!-- end column div below -->
+
+          </div>
+            <!-- Current Weather Needs to Popup here -->
+            <div class="col-sm-10">
+              <div class="row">
+                <div id="mainCard" class="col-sm-12 mb-3">
+                  <div >
+                    <div class="card">
+                      <h5 id="todaysDate" class="card-header"></h5>
+                      <div class="card-body">
+                        <h5 id="cityName" class="card-title">Your City of Choice </h5>
+                        <!--append cloud icon next to city?-->
+                        <p id="currentTemp" class="card-text">Current Temperature: </p>
+                        <p id="currentHum" class="card-text">Current Humidity: </p>
+                        <p id="currentWind" class="card-text">Current Wind Speed: </p>
+                        <p id="currentUV" class="card-text">Current UV Index: </p>
                       </div>
-                      <!-- State Selection Here -->
-                      <div class="form-inline mt-4">
-                        <label for="exampleFormControlSelect1" class="mx-1 mr-5">State:</label>
-                        <select class="form-control" id="exampleFormControlSelect1">
-                            <option value="Alabama">AL</option>
-                            <option value="Alaska">AK</option>
-                            <option value="Arizona">AZ</option>
-                            <option value="Arkansas">AR</option>
-                            <option value="California">CA</option>
-                            <option value="Colorado">CO</option>
-                            <option value="Connecticut">CT</option>
-                            <option value="Delaware">DE</option>
-                            <option value="Florida">FL</option>
-                            <option value="Georgia">GA</option>
-                            <option value="Hawaii">HI</option>
-                            <option value="Idaho">ID</option>
-                            <option value="Illinois">IL</option>
-                            <option value="Indiana">IN</option>
-                            <option value="Iowa">IA</option>
-                            <option value="Kansas">KS</option>
-                            <option value="Kentucky">KY</option>
-                            <option value="Louisiana">LA</option>
-                            <option value="Maine">ME</option>
-                            <option value="Maryland">MD</option>
-                            <option value="Massachusetts">MA</option>
-                            <option value="Michigan">MI</option>
-                            <option value="Minnesota">MN</option>
-                            <option value="Mississippi">MS</option>
-                            <option value="Missouri">MO</option>
-                            <option value="Montana">MT</option>
-                            <option value="Nebraska">NE</option>
-                            <option value="Nevada">NV</option>
-                            <option value="New Hampshire">NH</option>
-                            <option value="New Jersey">NJ</option>
-                            <option value="New Mexico">NM</option>
-                            <option value="New York">NY</option>
-                            <option value="North Carolina">NC</option>
-                            <option value="North Dakota">ND</option>
-                            <option value="Ohio">OH</option>
-                            <option value="Oklahoma">OK</option>
-                            <option value="Oregon">OR</option>
-                            <option value="Pennsylvania">PA</option>
-                            <option value="Rhode Island">RI</option>
-                            <option value="South Carolina">SC</option>
-                            <option value="South Dakota">SD</option>
-                            <option value="Tennessee">TN</option>
-                            <option value="Texas">TX</option>
-                            <option value="Utah">UT</option>
-                            <option value="Vermont">VT</option>
-                            <option value="Virginia">VA</option>
-                            <option value="Washington">WA</option>
-                            <option value="West Virginia">WV</option>
-                            <option value="Wisconsin">WI</option>
-                            <option value="Wyoming">WY</option>
-                        </select>
-                      </div>
-                    </form>
-                    <!-- end column div below -->
-                </div>
-                <!-- Current Weather Needs to Popup here -->
-                <div id="mainCard" class="col-sm-10">
-                    <div class="col-sm-10 mb-3 mt-4">
-                        <div class="card">
-                            <h5 id="todaysDate" class="card-header"></h5>
-                            <div class="card-body">
-                              <h5 id="cityName" class="card-title">Your City of Choice </h5> <!--append cloud icon next to city?-->
-                              <p id="currentTemp" class="card-text">Current Temperature: </p>
-                              <p id="currentHum" class="card-text">Current Humidity: </p>
-                              <p id="currentWind" class="card-text">Current Wind Speed: </p>
-                              <p id="currentUV" class="card-text">Current UV Index: </p>
-                            </div>
-                          </div>
                     </div>
+                  </div>
                 </div>
-                <!-- end row div below -->
-            </div>
-            <!-- Submit button here -->
-            <div class="row">
-                <div class="col-sm-2">
-                    <div class="search">
-                        <button type="submit" class="btn btn-primary mb-2 mt-1">Search Weather</button>
+              </div>
+              <div class="row" id="future-temps">
+                <div class="col ml-2 px-2">
+                  <div class="card" style="width: fit-content; white-space: nowrap;">
+                    <div id="day1" class="card-header">
+                      Tomorrow:
                     </div>
+                    <ul class="list-group list-group-flush">
+                      <li id="day1Temp" class="list-group-item">Temp: </li>
+                      <li id="day1Humidity" class="list-group-item">Humidity: </li>
+                      <li id="day1Wind" class="list-group-item">Wind: </li>
+                      <li id="day1Clouds" class="list-group-item">Clouds: </li>
+                    </ul>
+                  </div>
                 </div>
-                <!-- Cards need to go here -->
-                <div class="col-sm-2 ml-3">
-                    <div class="card" style="width: 12rem;">
-                        <div id="day1" class="card-header">
-                          Tomorrow:
-                        </div>
-                        <ul class="list-group list-group-flush">
-                          <li id="day1Temp" class="list-group-item">Temp: </li>
-                          <li id="day1Humidity" class="list-group-item">Humidity: </li>
-                          <li id="day1Wind" class="list-group-item">Wind: </li>
-                          <li id="day1Clouds" class="list-group-item">Clouds: </li>
-                        </ul>
+                <div class="col px-2">
+                  <div class="card" style="width: fit-content; white-space: nowrap;">
+                    <div id="day2" class="card-header">
+                      Day after Tomorrow:
                     </div>
+                    <ul class="list-group list-group-flush">
+                      <li id="day2Temp" class="list-group-item">Temp: </li>
+                      <li id="day2Humidity" class="list-group-item">Humidity: </li>
+                      <li id="day2Wind" class="list-group-item">Wind: </li>
+                      <li id="day2Clouds" class="list-group-item">Clouds: </li>
+                    </ul>
+                  </div>
                 </div>
-                <div class="col-sm-2 ml-3">
-                    <div class="card" style="width: 12rem;">
-                        <div id="day2" class="card-header">
-                          Day after Tomorrow:
-                        </div>
-                        <ul class="list-group list-group-flush">
-                          <li id="day2Temp" class="list-group-item">Temp: </li>
-                          <li id="day2Humidity" class="list-group-item">Humidity: </li>
-                          <li id="day2Wind" class="list-group-item">Wind: </li>
-                          <li id="day2Clouds" class="list-group-item">Clouds: </li>
-                        </ul>
+                <div class="col px-2">
+                  <div class="card" style="width: fit-content; white-space: nowrap;">
+                    <div id="day3" class="card-header">
+                      3 Days from Now:
                     </div>
+                    <ul class="list-group list-group-flush">
+                      <li id="day3Temp" class="list-group-item">Temp: </li>
+                      <li id="day3Humidity" class="list-group-item">Humidity: </li>
+                      <li id="day3Wind" class="list-group-item">Wind: </li>
+                      <li id="day3Clouds" class="list-group-item">Clouds: </li>
+                    </ul>
+                  </div>
                 </div>
-                <div class="col-sm-2 ml-3">
-                    <div class="card" style="width: 12rem;">
-                        <div id="day3" class="card-header">
-                          3 Days from Now:
-                        </div>
-                        <ul class="list-group list-group-flush">
-                          <li id="day3Temp" class="list-group-item">Temp: </li>
-                          <li id="day3Humidity" class="list-group-item">Humidity: </li>
-                          <li id="day3Wind" class="list-group-item">Wind: </li>
-                          <li id="day3Clouds" class="list-group-item">Clouds: </li>
-                        </ul>
+                <div class="col px-2">
+                  <div class="card" style="width: fit-content; white-space: nowrap;">
+                    <div id="day4" class="card-header">
+                      4 Days from now:
                     </div>
+                    <ul class="list-group list-group-flush">
+                      <li id="day4Temp" class="list-group-item">Temp: </li>
+                      <li id="day4Humidity" class="list-group-item">Humidity: </li>
+                      <li id="day4Wind" class="list-group-item">Wind: </li>
+                      <li id="day4Clouds" class="list-group-item">Clouds: </li>
+                    </ul>
+                  </div>
                 </div>
-                <div class="col-sm-2 ml-3">
-                    <div class="card" style="width: 12rem;">
-                        <div id="day4" class="card-header">
-                          4 Days from now:
-                        </div>
-                        <ul class="list-group list-group-flush">
-                          <li id="day4Temp" class="list-group-item">Temp: </li>
-                          <li id="day4Humidity" class="list-group-item">Humidity: </li>
-                          <li id="day4Wind" class="list-group-item">Wind: </li>
-                          <li id="day4Clouds" class="list-group-item">Clouds: </li>
-                        </ul>
+                <div class="col px-2">
+                  <div class="card" style="width: fit-content; white-space: nowrap;">
+                    <div id="day5" class="card-header">
+                      5 Days from Now:
                     </div>
+                    <ul class="list-group list-group-flush">
+                      <li id="day5Temp" class="list-group-item">Temp: </li>
+                      <li id="day5Humidity" class="list-group-item">Humidity: </li>
+                      <li id="day5Wind" class="list-group-item">Wind: </li>
+                      <li id="day5Clouds" class="list-group-item">Clouds: </li>
+                    </ul>
+                  </div>
                 </div>
-                <div class="col-sm-1 ml-3">
-                    <div class="card" style="width: 12rem;">
-                        <div id="day5" class="card-header">
-                          5 Days from Now:
-                        </div>
-                        <ul class="list-group list-group-flush">
-                          <li id="day5Temp" class="list-group-item">Temp: </li>
-                          <li id="day5Humidity" class="list-group-item">Humidity: </li>
-                          <li id="day5Wind" class="list-group-item">Wind: </li>
-                          <li id="day5Clouds" class="list-group-item">Clouds: </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+              </div>
+
+            </div>  
+              <!-- end row div below -->
+          </div>
+
+          <div class="row">
+              
+          </div>
         </div>
 
 
 
 
-        <!-- use Flex in bootstrap for saving recent choices? -->
 
 
 

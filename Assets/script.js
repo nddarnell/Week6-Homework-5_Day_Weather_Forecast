@@ -3,12 +3,10 @@ $(document).ready(function(){
     let state = "";
     let lat = "";
     let lon = "";
-    let futureWeather = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "," + state + "&units=imperial&appid=ce99efa490b0418e7d05fa61fdd66974"
-    let currentWeather = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "," + state + "&units=imperial&appid=ce99efa490b0418e7d05fa61fdd66974"
-    
+    let apiKey = "ce99efa490b0418e7d05fa61fdd66974";
 
 
-
+    //setting date header on the cards
     function todaysDate(){
         $("#todaysDate").text(moment().format('MMMM Do YYYY'))
         startDate = moment().format('MMMM Do YYYY')
@@ -24,196 +22,184 @@ $(document).ready(function(){
         $("#day5").text(next5Days)
     }
     todaysDate();
-    // Below is 5 day forecast noon weather conditions
-    // Want to display Temperature, Humiditiy, Wind? Cloudy or not?
-    // wrap in search button
-    
-    $(".search").on("click", function(){
-        let input = $("#formControlInput1")
-        localStorage.setItem("City Choice", input.val())
-        let stateSelection = $("#exampleFormControlSelect1")
-        localStorage.setItem("State Choice", stateSelection.val())
+    // setting everything to hide if the local storage is empty
+    if (localStorage.getItem("City Choice")) {
+        console.log("yes")
+        getData()
+    }else{
+      $("#mainCard").attr("class", "col-sm-12 hidden")
+      $("#future-temps").attr("class", "row hidden")
+    }
+    // on click button to set storage
+    $("#search").on("click", function(){
+      if(localStorage.getItem("City Choice")){
+        addToPast(localStorage.getItem("City Choice"), localStorage.getItem("State Choice"))
+      }
+      let input = $("#formControlInput1")
+      localStorage.setItem("City Choice", input.val())
+      let stateSelection = $("#exampleFormControlSelect1")
+      localStorage.setItem("State Choice", stateSelection.val())
 
-        let cityReturn = localStorage.getItem("City Choice")
-        let stateReturn = localStorage.getItem("State Choice")
-        city = cityReturn
-        state = stateReturn
-        $("#cityName").text(city).append(", " + state)
-
-
-        $.ajax({
-            url: "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "," + state + "&units=imperial&appid=ce99efa490b0418e7d05fa61fdd66974",
-            method: "GET"
-        })
-        .then(function(future){
-            console.log(future)
-            //Day 1 Noon
-            console.log(future.list[3])
-            let iconDay1Code = future.list[3].weather[0].icon
-            let iconURL = "https://openweathermap.org/img/w/" + iconDay1Code + ".png"
-            let iconDay1 = $("<img>").attr("src", iconURL)
-            $("#day1Temp").append(future.list[3].main.temp)
-            $("#day1Humidity").append(future.list[3].main.humidity)
-            $("#day1Wind").append(future.list[3].wind.speed)
-            $("#day1Clouds").append(iconDay1)
-            
-            if (future.list[3].main.temp > 80){
-                $("#day1Temp").attr("class", "list-group-item hot")
-            }else if(future.list[3].main.temp < 50){
-                $("#day1Temp").attr("class", "list-group-item cold")
-            }else if(future.list[3].main.temp > 50){
-                $("#day1Temp").attr("class", "list-group-item nice")
-            }
-            //Day 2 Noon
-            console.log(future.list[11])
-            let iconDay2Code = future.list[11].weather[0].icon
-            let iconURL2 = "https://openweathermap.org/img/w/" + iconDay2Code + ".png"
-            let iconDay2 = $("<img>").attr("src", iconURL2)
-            $("#day2Temp").append(future.list[11].main.temp)
-            $("#day2Humidity").append(future.list[11].main.humidity)
-            $("#day2Wind").append(future.list[11].wind.speed)
-            $("#day2Clouds").append(iconDay2)
-            
-            if (future.list[11].main.temp > 80){
-                $("#day2Temp").attr("class", "list-group-item hot")
-            }else if(future.list[11].main.temp < 50){
-                $("#day2Temp").attr("class", "list-group-item cold")
-            }else if(future.list[11].main.temp > 50){
-                $("#day2Temp").attr("class", "list-group-item nice")
-            }
-            //Day 3 Noon
-            console.log(future.list[19])
-            let iconDay3Code = future.list[19].weather[0].icon
-            let iconURL3 = "https://openweathermap.org/img/w/" + iconDay3Code + ".png"
-            let iconDay3 = $("<img>").attr("src", iconURL3)
-            $("#day3Temp").append(future.list[19].main.temp)
-            $("#day3Humidity").append(future.list[19].main.humidity)
-            $("#day3Wind").append(future.list[19].wind.speed)
-            $("#day3Clouds").append(iconDay3)
-            
-            if (future.list[19].main.temp > 80){
-                $("#day3Temp").attr("class", "list-group-item hot")
-            }else if(future.list[19].main.temp < 50){
-                $("#day3Temp").attr("class", "list-group-item cold")
-            }else if(future.list[19].main.temp > 50){
-                $("#day3Temp").attr("class", "list-group-item nice")
-            }
-            //Day 4 Noon
-            console.log(future.list[27])
-            let iconDay4Code = future.list[27].weather[0].icon
-            let iconURL4 = "https://openweathermap.org/img/w/" + iconDay4Code + ".png"
-            let iconDay4 = $("<img>").attr("src", iconURL4)
-            $("#day4Temp").append(future.list[27].main.temp)
-            $("#day4Humidity").append(future.list[27].main.humidity)
-            $("#day4Wind").append(future.list[27].wind.speed)
-            $("#day4Clouds").append(iconDay4)
-            
-            if (future.list[27].main.temp > 80){
-                $("#day4Temp").attr("class", "list-group-item hot")
-            }else if(future.list[27].main.temp < 50){
-                $("#day4Temp").attr("class", "list-group-item cold")
-            }else if(future.list[27].main.temp > 50){
-                $("#day4Temp").attr("class", "list-group-item nice")
-            }
-            //Day 5 Noon
-            console.log(future.list[35])
-            let iconDay5Code = future.list[35].weather[0].icon
-            let iconURL5 = "https://openweathermap.org/img/w/" + iconDay5Code + ".png"
-            let iconDay5 = $("<img>").attr("src", iconURL5)
-            $("#day5Temp").append(future.list[35].main.temp)
-            $("#day5Humidity").append(future.list[35].main.humidity)
-            $("#day5Wind").append(future.list[35].wind.speed)
-            $("#day5Clouds").append(iconDay5)
-            
-            if (future.list[35].main.temp > 80){
-                $("#day5Temp").attr("class", "list-group-item hot")
-            }else if(future.list[35].main.temp < 50){
-                $("#day5Temp").attr("class", "list-group-item cold")
-            }else if(future.list[35].main.temp > 50){
-                $("#day5Temp").attr("class", "list-group-item nice")
-            }
-
-        })
-    
-        // Below is current Weather conditions
-        // Want to display temperature, humidity, wind, uv index
-        $.ajax({
-            url: "https://api.openweathermap.org/data/2.5/weather?q=" + city + "," + state + "&units=imperial&appid=ce99efa490b0418e7d05fa61fdd66974",
-            method: "GET"
-        })
-        .then(function(current){
-            console.log(current)
-            // Cloud Icons
-            let iconCode = current.weather[0].icon
-            let iconURL = "https://openweathermap.org/img/w/" + iconCode + ".png"
-            let icon = $("<img>").attr("src", iconURL)
-            $("#cityName").append(icon)
-            // temp, humidity
-            console.log(current.main.temp)
-            console.log(current.main.humidity)
-            $("#currentTemp").append(current.main.temp)
-            if (current.main.temp > 80){
-                $("#currentTemp").attr("class", "card-text hot")
-            }else if(current.main.temp < 50){
-                $("#currentTemp").attr("class", "card-text cold")
-            }else if(current.main.temp > 50){
-                $("#currentTemp").attr("class", "card-text nice")
-            }
-
-            $("#currentHum").append(current.main.humidity)
-            // wind
-            console.log(current.wind.speed)
-            $("#currentWind").append(current.wind.speed)
-
-            // uv index
-            // youll want to grab this and append / add it as a text so lat = current.coord.lat
-            console.log(current.coord.lon)
-            console.log(current.coord.lat)
-            lat = current.coord.lat
-            lon = current.coord.lon
-
-            
-            
-            
-    
-            // Below is UV index
-            $.ajax({
-                url: "https://api.openweathermap.org/data/2.5/uvi?appid=ce99efa490b0418e7d05fa61fdd66974&lat=" + lat + "&lon=" + lon,
-                method: "GET"
-            })
-            .then(function(uv){
-                console.log(uv)
-                console.log(uv.value)
-                $("#currentUV").append(uv.value)
-                
-                if(uv.value < 2.9){
-                    $("#currentUV").attr("class", "card-text uvLow")
-                }
-                else if(uv.value < 5.9){
-                    $("#currentUV").attr("class", "card-text uvMed")
-                }
-                else if(uv.value < 7.9){
-                    $("#currentUV").attr("class", "card-text uvHigh")
-                }
-                else if(uv.value < 10.9){
-                    $("#currentUV").attr("class", "card-text uvVeryHigh")
-                }
-                else if(uv.value > 11){
-                    $("#currentUV").attr("class", "card-text uvExt")
-                }
-
-            })
-    
-    
-    
-            
-            
-
-        })
-
+        
+        getData()
         
     })
 
+    // function adding local storage to past searches
+    function addToPast(city, state){
+      var pastSearches = [];
+      if (localStorage.getItem("past-searches") != null){
+        pastSearches = JSON.parse(localStorage.getItem("past-searches"));
+        console.log(pastSearches.length)
+        console.log({city: city, state: state});
+        pastSearches.push({city: city, state: state});
+        console.log(pastSearches);
+        if(pastSearches.length>5){
+          pastSearches.shift();
+        }
+        localStorage.setItem("past-searches", JSON.stringify(pastSearches));
+      }else{
+        pastSearches.push({city: city, state: state});
+          console.log({city: city, state: state});
+          console.log(pastSearches);
+          localStorage.setItem("past-searches", JSON.stringify(pastSearches));
+      }
+    }
+    // function adding locally stored searches to buttons
+    function pastBtns(){
+      var pastSearches = [];
+      if (localStorage.getItem("past-searches") != null){
+        pastSearches = JSON.parse(localStorage.getItem("past-searches"));
+        var recentFirst = pastSearches.reverse();
+        recentFirst.forEach((entry) => {
+          //console.log(entry)
+          var newBtn = "<button id='"+entry.city+"_"+entry.state+"' class='btn btn-secondary col mb-2 mt-1 past-btn'>"+ entry.city+", "+entry.state+"</button>"
+          $("#past-searches").append(newBtn)
+        });
+      }
+    }
+    pastBtns()
 
-    // if statement highlighting temp based on temp... if temp = 40 set attribute class = cold???
+    $(".past-btn").on("click", function(){
+      console.log(this.id)
+      var past = this.id.split("_")
+      console.log(past[0])
+      console.log(past[1])
+      if(localStorage.getItem("City Choice")){
+        addToPast(localStorage.getItem("City Choice"), localStorage.getItem("State Choice"))
+      }
+
+      getData(past[0], past[1]);
+
+    })
+    // clearing everything
+    $("#clear-btn").on("click", function(){
+      localStorage.removeItem("City Choice");
+      localStorage.removeItem("State Choice");
+      localStorage.removeItem("past-searches");
+
+    })
+    // main function to do api calls
+    function getData(city=localStorage.getItem("City Choice"), state=localStorage.getItem("State Choice")){
+        city = city;
+        localStorage.setItem("City Choice", city)
+        state = state;
+        localStorage.setItem("State Choice",state)
+        $("#cityName")
+          .text(city)
+          .append(", " + state);
+
+        // Below is current Weather conditions
+        // Want to display temperature, humidity, wind, uv index
+        $.ajax({
+          url:
+            "https://api.openweathermap.org/data/2.5/weather?q=" +
+            city +
+            "," +
+            state +
+            ",USA&units=imperial&appid=" +
+            apiKey,
+          method: "GET",
+        }).then(function (current) {
+          console.log(current);
+          // Cloud Icons
+          let iconCode = current.weather[0].icon;
+          let iconURL = "https://openweathermap.org/img/w/" + iconCode + ".png";
+          let icon = $("<img>").attr("src", iconURL);
+          $("#cityName").append(icon);
+          // temp, humidity
+          console.log(current.main.temp);
+          console.log(current.main.humidity+"%");
+          $("#currentTemp").append(current.main.temp + "°F");
+          if (current.main.temp > 80) {
+            $("#currentTemp").attr("class", "card-text hot");
+          } else if (current.main.temp < 50) {
+            $("#currentTemp").attr("class", "card-text cold");
+          } else if (current.main.temp > 50) {
+            $("#currentTemp").attr("class", "card-text nice");
+          }
+
+          $("#currentHum").append(current.main.humidity+"%");
+          // wind
+          console.log(current.wind.speed+" mph");
+          $("#currentWind").append(current.wind.speed+" mph");
+
+          console.log(current.coord.lon);
+          console.log(current.coord.lat);
+          lat = current.coord.lat;
+          lon = current.coord.lon;
+
+          // Below is UV index from onecall and not forecast api anymore
+          $.ajax({
+            url:
+              "https://api.openweathermap.org/data/2.5/onecall?lat=" +
+              lat +
+              "&lon=" +
+              lon +
+              "&units=imperial&appid=" +
+              apiKey,
+            method: "GET",
+          }).then(function (onecall) {
+            console.log(onecall);
+            $("#currentUV").append(onecall.current.uvi);
+
+            if (onecall.current.uvi < 2.9) {
+              $("#currentUV").attr("class", "card-text uvLow");
+            } else if (onecall.current.uvi < 5.9) {
+              $("#currentUV").attr("class", "card-text uvMed");
+            } else if (onecall.current.uvi < 7.9) {
+              $("#currentUV").attr("class", "card-text uvHigh");
+            } else if (onecall.current.uvi < 10.9) {
+              $("#currentUV").attr("class", "card-text uvVeryHigh");
+            } else if (onecall.current.uvi > 11) {
+              $("#currentUV").attr("class", "card-text uvExt");
+            }
+            // for loop takes care of all days ahead now instead of each individual class being filled in
+            for(var i = 1; i < 6; i++){
+              var futureDay = onecall.daily[i]
+
+              
+              console.log(futureDay);
+              let iconDay1Code = futureDay.weather[0].icon;
+              let iconURL =
+                "https://openweathermap.org/img/w/" + iconDay1Code + ".png";
+              let iconDay1 = $("<img>").attr("src", iconURL);
+              $("#day"+i+"Temp").append(futureDay.temp.day + "°F");
+              $("#day"+i+"Humidity").append(futureDay.humidity+"%");
+              $("#day"+i+"Wind").append(futureDay.wind_speed+" mph");
+              $("#day"+i+"Clouds").append(iconDay1);
+
+              if (futureDay.temp.day > 80) {
+                $("#day"+i+"Temp").attr("class", "list-group-item hot");
+              } else if (futureDay.temp.day < 50) {
+                $("#day"+i+"Temp").attr("class", "list-group-item cold");
+              } else if (futureDay.temp.day > 50) {
+                $("#day"+i+"Temp").attr("class", "list-group-item nice");
+              }
+            }
+
+          });
+        });
+    }
 });
+
