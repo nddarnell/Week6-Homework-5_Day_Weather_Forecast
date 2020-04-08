@@ -23,6 +23,36 @@
 .uvExt {
     background-color: rgb(218, 102, 218);
 }
-.hidden{
+.hidden {
     visibility: hidden;
+}
+.sunnyBG {
+    background-image: url("clear_sky.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.fewScatBG {
+    background-image: url("scattered_clouds_few_clouds_broken_clouds.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.rainShowerBG {
+    background-image: url("rain_shower\ clouds.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.thunderBG {
+    background-image: url("thunderstorm.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.snowBG {
+    background-image: url("snow.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }

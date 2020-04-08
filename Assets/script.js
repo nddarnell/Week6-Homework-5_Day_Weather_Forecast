@@ -8,13 +8,13 @@ $(document).ready(function(){
 
     //setting date header on the cards
     function todaysDate(){
-        $("#todaysDate").text(moment().format('MMMM Do YYYY'))
+        $("#todaysDate").text(moment().format('dddd, MMMM Do YYYY'))
         startDate = moment().format('MMMM Do YYYY')
         let nextDay = moment(startDate, "MMMM Do YYYY").add(1, 'days').format("MMMM Do YYYY")
         let next2Days = moment(startDate, "MMMM Do YYYY").add(2, 'days').format("MMMM Do YYYY")
         let next3Days = moment(startDate, "MMMM Do YYYY").add(3, 'days').format("MMMM Do YYYY")
-        let next4Days = moment(startDate, "MMMM Do YYYY").add(4, 'days').format("MMMM Do YYYY")
         let next5Days = moment(startDate, "MMMM Do YYYY").add(5, 'days').format("MMMM Do YYYY")
+        let next4Days = moment(startDate, "MMMM Do YYYY").add(4, 'days').format("MMMM Do YYYY")
         $("#day1").text(nextDay)
         $("#day2").text(next2Days)
         $("#day3").text(next3Days)
@@ -125,8 +125,12 @@ $(document).ready(function(){
           // Cloud Icons
           let iconCode = current.weather[0].icon;
           let iconURL = "https://openweathermap.org/img/w/" + iconCode + ".png";
-          let icon = $("<img>").attr("src", iconURL);
+          let icon = $("<img data-toggle='tooltip'data-placement='right' title='"+ current.weather[0].description +"'>").attr("src", iconURL);
           $("#cityName").append(icon);
+
+          console.log(current.weather[0].description)
+          
+
           // temp, humidity
           console.log(current.main.temp);
           console.log(current.main.humidity+"%");
@@ -137,6 +141,22 @@ $(document).ready(function(){
             $("#currentTemp").attr("class", "card-text cold");
           } else if (current.main.temp > 50) {
             $("#currentTemp").attr("class", "card-text nice");
+          }
+          // changes jumbotron background
+          if (current.weather[0].main === "Clear"){
+            $("#jumbotronbg").attr("class", "jumbotron sunnyBG")
+          }
+          else if (current.weather[0].main === "Clouds"){
+            $("#jumbotronbg").attr("class", "jumbotron fewScatBG")
+          }
+          else if (current.weather[0].main === "Rain" || current.weather[0].main === "Drizzle") {
+            $("#jumbotronbg").attr("class", "jumbotron rainShowerBG")
+          }
+          else if (current.weather[0].main === "Thunderstorm") {
+            $("#jumbotronbg").attr("class", "jumbotron thunderBG")
+          }
+          else if (current.weather[0].main === "Snow") {
+            $("#jumbotronbg").attr("class", "jumbotron snowBG")
           }
 
           $("#currentHum").append(current.main.humidity+"%");
