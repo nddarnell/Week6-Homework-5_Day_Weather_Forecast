@@ -56,3 +56,21 @@
     background-size: cover;
     background-position: center;
 }
+.hazeBG {
+    background-image: url("haze.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.dustBG {
+    background-image: url("dust.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.tornadoBG {
+    background-image: url("tornado.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}

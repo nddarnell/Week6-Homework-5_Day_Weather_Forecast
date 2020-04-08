@@ -143,20 +143,36 @@ $(document).ready(function(){
             $("#currentTemp").attr("class", "card-text nice");
           }
           // changes jumbotron background
-          if (current.weather[0].main === "Clear"){
-            $("#jumbotronbg").attr("class", "jumbotron sunnyBG")
-          }
-          else if (current.weather[0].main === "Clouds"){
-            $("#jumbotronbg").attr("class", "jumbotron fewScatBG")
-          }
-          else if (current.weather[0].main === "Rain" || current.weather[0].main === "Drizzle") {
-            $("#jumbotronbg").attr("class", "jumbotron rainShowerBG")
-          }
-          else if (current.weather[0].main === "Thunderstorm") {
-            $("#jumbotronbg").attr("class", "jumbotron thunderBG")
-          }
-          else if (current.weather[0].main === "Snow") {
-            $("#jumbotronbg").attr("class", "jumbotron snowBG")
+          switch (current.weather[0].main){
+            case "Clear":
+              $("#jumbotronbg").attr("class", "jumbotron sunnyBG")
+            break
+            case "Clouds":
+              $("#jumbotronbg").attr("class", "jumbotron fewScatBG")
+            break
+            case "Rain":
+            case "Drizzle":
+              $("#jumbotronbg").attr("class", "jumbotron rainShowerBG")
+            break
+            case "Thunderstorm":
+              $("#jumbotronbg").attr("class", "jumbotron thunderBG")
+            break
+            case "Snow":
+              $("#jumbotronbg").attr("class", "jumbotron snowBG")
+            break
+            case "Haze":
+            case "Fog":
+            case "Mist":
+            case "Smoke":
+              $("#jumbotronbg").attr("class", "jumbotron hazeBG")
+            break
+            case "Dust":
+            case "Sand":
+              $("#jumbotronbg").attr("class", "jumbotron dustBG")
+            break
+            case "Tornado":
+              $("#jumbotronbg").attr("class", "jumbotron tornadoBG")
+            break
           }
 
           $("#currentHum").append(current.main.humidity+"%");
