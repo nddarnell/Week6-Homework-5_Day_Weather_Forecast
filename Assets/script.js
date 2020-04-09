@@ -220,16 +220,16 @@ $(document).ready(function(){
               let iconURL =
                 "https://openweathermap.org/img/w/" + iconDay1Code + ".png";
               let iconDay1 = $("<img>").attr("src", iconURL);
-              $("#day"+i+"Temp").append(futureDay.temp.day + "°F");
+              $("#day"+i+"Temp").append(futureDay.temp.max + "°F");
               $("#day"+i+"Humidity").append(futureDay.humidity+"%");
               $("#day"+i+"Wind").append(futureDay.wind_speed+" mph");
               $("#day"+i+"Clouds").append(iconDay1);
 
-              if (futureDay.temp.day > 80) {
+              if (futureDay.temp.max > 80) {
                 $("#day"+i+"Temp").attr("class", "list-group-item hot");
-              } else if (futureDay.temp.day < 50) {
+              } else if (futureDay.temp.max < 50) {
                 $("#day"+i+"Temp").attr("class", "list-group-item cold");
-              } else if (futureDay.temp.day > 50) {
+              } else if (futureDay.temp.max > 50) {
                 $("#day"+i+"Temp").attr("class", "list-group-item nice");
               }
             }
