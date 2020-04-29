@@ -7,7 +7,7 @@ This small project is a 5 Day Weather Forecast that allows you to search for any
 
 ## Table
 
-* [Deployed Site](#deployed)
+* [Deployed Site](#deployed site)
 
 * [Usage](#usage)
 
