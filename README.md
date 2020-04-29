@@ -7,7 +7,7 @@ This small project is a 5 Day Weather Forecast that allows you to search for any
 
 ## Table
 
-* [Deployed Site](#deployed site)
+* [Application](#application)
 
 * [Usage](#usage)
 
@@ -17,7 +17,7 @@ This small project is a 5 Day Weather Forecast that allows you to search for any
 
 * [Questions](#questions)
 
-## Deployed Site
+## Application
 
 https://nddarnell.github.io/Week6-Homework-5_Day_Weather_Forecast/
 
